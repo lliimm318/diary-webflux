@@ -1,4 +1,4 @@
-# fassto-webflux
+# study-webflux
 crud webflux로 구현해보기!
 <br/></br>
 
