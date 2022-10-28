@@ -26,7 +26,7 @@ public class Diary {
 
     private LocalDate date;
 
-    private Boolean isLocked;
+    private Boolean locked;
 
 
 }
