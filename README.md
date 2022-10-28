@@ -7,7 +7,8 @@ crud webflux로 구현해보기!
 1. [파일 구조](#파일-구조)
 2. [WebFLux란](#WebFlux란-무엇일까)
 3. [MVC WebFlux로 전환](#MVC-WebFlux로-전환)
-4. [DataBase](#DataBase)
+4. [주의 사항](#주의-사항)
+5. [DataBase](#DataBase)
 
 ### 파일 구조
 
@@ -51,7 +52,6 @@ Reactor는 리액티브 스트림을 지원하는 Mono와 Flux 사용을 위해 
 내부엔 블로킹이 존재하지 않아서 작업들은 비동기적으로 처리된다. 라인 순서에 따른 실제 코드의 동작 순서는 일치하지 않게된다. flatMap을 통해 이전 비동기 작업이 끝난 후 다음 로직들이 처리되도록 순서를 보장시켜줄 수 있다. flatMap에 전달하는 함수의 리턴 타입은 Mono나 Flux와 같은 리액티브 API이다.
 - **예외 처리**           
 WebFlux에서 리턴 타입은 Mono나 Flux로 구성된다. 예외를 던져야할 때 throw 대신 Mono.error API를 사용한다
-
 <br/></br>
 
 ## 주의 사항
