@@ -1,5 +1,5 @@
 # study-webflux
-crud webflux로 구현해보기!
+간단한 일기장 crud를 webflux로 구현해보자!
 <br/></br>
 
 ## 목차
