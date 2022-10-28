@@ -10,20 +10,7 @@ crud webflux로 구현해보기!
 ### 파일 구조
 
 ```
-scr
- ㄴ main
-	 ㄴ java
-		 ㄴ com.study.webflux
-			 ㄴ controller
-       ㄴ domain
-        ㄴ service
-			 ㄴ entity
-			 ㄴ excepion
-			 ㄴ payload
-			 	 ㄴ response
-			 	 ㄴ request
-			 ㄴ repository
-	  ㄴ	resources
+
 		
 ```
 
