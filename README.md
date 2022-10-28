@@ -28,7 +28,7 @@
       │           ├─ exception
       │           ├─ payload
       │           │  ├─ request
-      │           │  ├─ response
+      │           │  └─ response
       │           └─  repository
       └─ resources
          └─ application.yml		
