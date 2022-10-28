@@ -1,0 +1,10 @@
+
+.DS_Store
+*.lock
+*.bin
+*.properties
+*.xml
+.idea/.name
+HELP.md
+*.class
+*.probe
