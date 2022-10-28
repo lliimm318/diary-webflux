@@ -58,7 +58,7 @@ WebFlux에서 리턴 타입은 Mono나 Flux로 구성된다. 예외를 던져야
 **Mono와 Flux에서 block() 호출 금지.**     
 Mono의 block() 메서드는 현재 동작중인 쓰레드를 차단합니다. 따라서 이후 프로그램이 더 이상 반응하지 않는다..
 Flux는 blockFirst(), blockFirst(Duration timeout) 및 blockLast() , blockLast(Duration timeout)을 사용하지 않는게 좋다
-
+<br/></br>
 
 ## DataBase
 우리가 흔히 사용하는 JPA는 WebFlux에서 보통 사용하지 않는다. R2DBC를 사용한다! (JDBC는 블로킹이고, R2DBC가 논블로킹) JPA와 R2DBC의 성능 차이가 커서 JPA는 권장하지 않는다고 한다.<br/>
