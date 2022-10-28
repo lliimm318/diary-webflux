@@ -2,6 +2,8 @@
 crud webflux로 구현해보기!
 <br/></br>
 
+### 파일구조
+
 
 ## DataBase
 우리가 흔히 사용하는 JPA는 WebFlux에서 보통 사용하지 않는다. R2DBC를 사용한다! (JDBC는 블로킹이고, R2DBC가 논블로킹) JPA와 R2DBC의 성능 차이가 커서 JPA는 권장하지 않는다고 한다.<br/>
