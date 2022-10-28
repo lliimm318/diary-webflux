@@ -73,7 +73,7 @@ WebFlux에서 리턴 타입은 Mono나 Flux로 구성된다. 예외를 던져야
 
 ## 주의 사항
 **Mono와 Flux에서 block() 호출 금지.**     
-Mono의 block() 메서드는 현재 동작중인 쓰레드를 차단합니다. 따라서 이후 프로그램이 더 이상 반응하지 않는다..
+Mono의 block() 메서드는 현재 동작중인 스레드를 차단한다. 따라서 이후 프로그램이 더 이상 반응하지 않는다..
 Flux는 blockFirst(), blockFirst(Duration timeout) 및 blockLast() , blockLast(Duration timeout)을 사용하지 않는게 좋다
 <br/></br>
 
