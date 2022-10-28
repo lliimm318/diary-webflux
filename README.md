@@ -13,8 +13,25 @@
 ### 파일 구조
 
 ```
-
-		
+📦
+└─ src
+   └─ main
+      ├─ java
+      │  └─ com
+      │     └─ study
+      │        └─ webflux
+      │           ├─ WebfluxApplication.java
+      │           ├─ controller
+      │           ├─ domain
+      │           │  └─ service
+      │           ├─ entity
+      │           ├─ exception
+      │           ├─ payload
+      │           │  ├─ request
+      │           │  ├─ response
+      │           └─  repository
+      └─ resources
+         └─ application.yml		
 ```
 
 ## WebFlux란 무엇일까
