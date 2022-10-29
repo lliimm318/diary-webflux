@@ -27,6 +27,7 @@ dependencies {
 	implementation "io.jsonwebtoken:jjwt:0.9.1"
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+	runtimeOnly 'io.r2dbc:r2dbc-mysql'
 	runtimeOnly 'mysql:mysql-connector-java'
 
 	annotationProcessor 'org.projectlombok:lombok'
