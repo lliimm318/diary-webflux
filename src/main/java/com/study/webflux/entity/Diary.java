@@ -28,5 +28,8 @@ public class Diary {
 
     private Boolean locked;
 
-
+    public static Diary from(String title, String content, String name, String weather, Boolean isLocked) {
+        UUID uuid = UUID.randomUUID();
+        return new Diary(uuid, title, content, name, weather, LocalDate.now(), isLocked);
+    }
 }
