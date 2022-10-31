@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.time.LocalDate;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -25,12 +24,11 @@ public class DiaryServiceImpl implements DiaryService {
 
     @Override
     public Mono<Diary> createDiary(DiaryRequest diaryRequest) {
-        Diary diary = toDiary(
-                diaryRequest.getTitle(),
+        final var diary = Diary.from(diaryRequest.getTitle(),
                 diaryRequest.getContent(),
+                authFacade.getUserName(),
                 diaryRequest.getWeather(),
-                diaryRequest.getIsLocked()
-        );
+                diaryRequest.getIsLocked());
 
         return diaryRepository.save(diary);
     }
@@ -42,7 +40,7 @@ public class DiaryServiceImpl implements DiaryService {
                     diary.setTitle(diaryRequest.getTitle());
                     diary.setContent(diaryRequest.getContent());
                     diary.setWeather(diary.getWeather());
-                    diary.setIsLocked(diaryRequest.getIsLocked());
+                    diary.setLocked(diaryRequest.getIsLocked());
 
                     return diaryRepository.save(diary);
                 })
@@ -64,7 +62,7 @@ public class DiaryServiceImpl implements DiaryService {
 
     @Override
     public Flux<Diary> getDiaryList() {
-        return diaryRepository.findByIsLockedFalseOrderByDate();
+        return diaryRepository.findByLockedIsFalseOrderByDate();
     }
 
     @Override
@@ -82,19 +80,14 @@ public class DiaryServiceImpl implements DiaryService {
 
     @Override
     public Mono<Diary> getDiary(UUID uuid) {
-        return diaryRepository.findByIdAndIsLockedFalse(uuid)
+        return diaryRepository.findByIdAndLockedIsFalse(uuid)
                 .flatMap(diary -> {
-                    if (diary.getIsLocked()) {
+                    if (diary.getLocked()) {
                         return Mono.error(UserNotFoundException::new);
                     } else {
                         return Mono.just(diary);
                     }
                 })
                 .switchIfEmpty(Mono.error(DiaryNotFoundException::new));
-    }
-
-    private Diary toDiary(String title, String content, String weather, Boolean isLocked) {
-        UUID uuid = UUID.randomUUID();
-        return new Diary(uuid, title, content, authFacade.getUserName(), weather, LocalDate.now(), isLocked);
     }
 }
