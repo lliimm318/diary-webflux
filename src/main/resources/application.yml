@@ -1,9 +1,13 @@
 spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/example
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/webflux
     username: root
     password: qwe123
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    pool:
+      initial-size: 100
+      max-size: 500
+      max-idle-time: 30m
+
 
 auth:
   jwt:
