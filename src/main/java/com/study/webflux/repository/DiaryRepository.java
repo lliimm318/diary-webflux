@@ -13,8 +13,8 @@ public interface DiaryRepository extends ReactiveCrudRepository<Diary, UUID> {
 
     Flux<Diary> findByWriterOrderByDate(String writer);
 
-    Flux<Diary> findByIsLockedFalseOrderByDate();
+    Flux<Diary> findByLockedIsFalseOrderByDate();
 
-    Mono<Diary> findByIdAndIsLockedFalse(UUID uuid);
+    Mono<Diary> findByIdAndLockedIsFalse(UUID uuid);
 
 }
