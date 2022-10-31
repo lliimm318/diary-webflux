@@ -36,6 +36,16 @@ public class TokenServiceImpl implements TokenService {
         return generateToken(name, refreshExp);
     }
 
+    @Override
+    public String getName(String token) {
+        try {
+            return Jwts.parser().setSigningKey(secretKey)
+                    .parseClaimsJws(token).getBody().getSubject();
+        } catch (Exception e) {
+            throw new InvalidTokenException();
+        }
+    }
+
     private String generateToken(String name, Long exp) {
         return Jwts.builder()
                 .setSubject(name)
