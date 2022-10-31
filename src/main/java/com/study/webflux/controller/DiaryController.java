@@ -33,7 +33,7 @@ public class DiaryController {
         return diaryService.deleteDiary(uuid);
     }
 
-    @GetMapping
+    @GetMapping("/my")
     public Flux getMyDiaryList() {
         return diaryService.getMyDiaryList();
     }
@@ -48,7 +48,7 @@ public class DiaryController {
         return diaryService.getMyDiary(uuid);
     }
 
-    @GetMapping("/{uuid}")
+    @GetMapping("/my/{uuid}")
     public Mono getDiary(@PathVariable UUID uuid) {
         return diaryService.getDiary(uuid);
     }
