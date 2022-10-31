@@ -1,13 +1,13 @@
 package com.study.webflux.domain.service.Token;
 
 import com.study.webflux.domain.service.User.AuthFacade;
+import com.study.webflux.exception.InvalidTokenException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.crypto.SecretKey;
 import java.time.Instant;
 import java.util.Date;
 
@@ -50,7 +50,7 @@ public class TokenServiceImpl implements TokenService {
         return Jwts.builder()
                 .setSubject(name)
                 .setIssuedAt(Date.from(Instant.now()))
-                .setExpiration(new Date(System.currentTimeMillis() + accessExp * 1000))
+                .setExpiration(Date.from(Instant.now().plusSeconds(exp)))
                 .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
     }
