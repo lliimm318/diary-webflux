@@ -29,7 +29,8 @@
       │           ├─ payload
       │           │  ├─ request
       │           │  └─ response
-      │           └─  repository
+      │           ├─ repository
+      │           └─ security
       └─ resources
          └─ application.yml		
 ```
