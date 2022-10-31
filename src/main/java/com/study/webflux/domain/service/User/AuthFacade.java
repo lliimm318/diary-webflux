@@ -21,9 +21,4 @@ public class AuthFacade {
     public String getUserName() {
         return this.getAuthentication().getName();
     }
-
-    public Mono<User> getUser() {
-        return userRepository.findById(getUserName())
-                .switchIfEmpty(Mono.error(UserNotFoundException::new));
-    }
 }

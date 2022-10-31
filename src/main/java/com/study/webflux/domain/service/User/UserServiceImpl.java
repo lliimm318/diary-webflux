@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Mono register(AuthRequest authRequest) {
-        User user = toUser(authRequest.getName(), authRequest.getPassword(), passwordEncoder);
+        final var user = User.from(authRequest.getName(), authRequest.getPassword(), passwordEncoder);
 
         return userRepository.findByName(user.getName())
                 .handle((dbUser, sink) -> {
@@ -49,10 +49,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Mono tokenRefresh(String token) {
-        return null;
-    }
+        String name = tokenService.getName(token);
 
-    private User toUser(String name, String password, PasswordEncoder passwordEncoder) {
-        return new User(name, passwordEncoder.encode(password));
+        return userRepository.findByName(name)
+                .flatMap(user -> Mono.just(new TokenResponse(tokenService.generateAccessToken(name), token)))
+                .switchIfEmpty(Mono.error(InvalidTokenException::new));
     }
 }
