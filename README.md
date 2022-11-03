@@ -84,6 +84,8 @@ Flux는 blockFirst(), blockFirst(Duration timeout) 및 blockLast() , blockLast(D
 <br/></br>
 
 ## DataBase
+![cpu_per_request_at_different_concurrencies](https://user-images.githubusercontent.com/66578746/199632706-dccb60ce-9aa6-4b71-ac22-eece17aac212.png)
+
 우리가 흔히 사용하는 JPA는 WebFlux에서 보통 사용하지 않는다. spring MVC + JPA 처럼 WebFlux + R2DBC 요런 느낌이당! (JDBC는 블로킹이고, R2DBC가 논블로킹) JPA와 R2DBC의 성능 차이가 커서 JPA는 권장하지 않는다고 한다.<br/>
 
 Webflux R2DBC vs JPA <br/>  https://technology.amis.nl/software-development/performance-and-tuning/spring-blocking-vs-non-blocking-r2dbc-vs-jdbc-and-webflux-vs-web-mvc/
