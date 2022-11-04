@@ -1,5 +1,7 @@
 package com.study.webflux.security;
 
+import com.study.webflux.domain.service.Token.TokenService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
@@ -16,7 +18,22 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebFluxSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
+
+    private final TokenService tokenService;
+
+    @Bean
+    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
+        http
+                .csrf(ServerHttpSecurity.CsrfSpec::disable)
+                .authorizeExchange(exchanges -> exchanges
+                        .anyExchange().authenticated()
+                )
+                .httpBasic(withDefaults())
+                .formLogin(withDefaults());
+        return http.build();
+    }
 
     @Bean
     public MapReactiveUserDetailsService userDetailsService() {
@@ -29,24 +46,15 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
-        http
-                .authorizeExchange(exchanges -> exchanges
-                        .anyExchange().authenticated()
-                )
-                .httpBasic(withDefaults())
-                .formLogin(withDefaults());
-        return http.build();
-    }
-
-    @Bean
     public WebFluxConfigurer corsConfigurer() {
         return new WebFluxConfigurerComposite() {
 
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("*")
-                        .allowedMethods("*");
+                registry.addMapping("/**")
+                        .allowedOrigins("http://localhost:8080")
+                        .allowedHeaders("*")
+                        .allowedMethods("POST", "GET", "PUT", "DELETE");
             }
         };
     }
