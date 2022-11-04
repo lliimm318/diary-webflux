@@ -3,10 +3,8 @@ spring:
     url: r2dbc:mysql://localhost:3306/webflux
     username: root
     password: qwe123
-    pool:
-      initial-size: 100
-      max-size: 500
-      max-idle-time: 30m
+  main:
+    allow-bean-definition-overriding: true
 
 
 auth:
