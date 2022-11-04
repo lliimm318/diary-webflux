@@ -6,6 +6,8 @@ public interface TokenService {
 
     String  generateRefreshToken(String name);
 
+    Boolean validToken(String token);
+
     String getName(String token);
 
 }

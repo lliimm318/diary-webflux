@@ -1,6 +1,6 @@
 package com.study.webflux.domain.service.Token;
 
-import com.study.webflux.domain.service.User.AuthFacade;
+import com.study.webflux.security.auth.AuthFacade;
 import com.study.webflux.exception.InvalidTokenException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -34,6 +34,17 @@ public class TokenServiceImpl implements TokenService {
     @Override
     public String generateRefreshToken(String name) {
         return generateToken(name, refreshExp);
+    }
+
+    @Override
+    public Boolean validToken(String token) {
+        try {
+            Jwts.parser().setSigningKey(secretKey)
+                    .parseClaimsJws(token).getBody().getSubject();
+            return true;
+        } catch (Exception e) {
+            throw new InvalidTokenException();
+        }
     }
 
     @Override
