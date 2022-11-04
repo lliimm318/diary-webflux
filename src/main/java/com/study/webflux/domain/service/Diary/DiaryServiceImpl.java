@@ -1,6 +1,6 @@
 package com.study.webflux.domain.service.Diary;
 
-import com.study.webflux.domain.service.User.AuthFacade;
+import com.study.webflux.security.auth.AuthFacade;
 import com.study.webflux.entity.Diary;
 import com.study.webflux.exception.DiaryNotFoundException;
 import com.study.webflux.exception.InvalidTokenException;
