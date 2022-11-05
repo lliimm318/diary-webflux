@@ -74,7 +74,7 @@ Reactor는 리액티브 스트림을 지원하는 Mono와 Flux 사용을 위해 
 - **예외 처리**           
 WebFlux에서 리턴 타입은 Mono나 Flux로 구성된다. 예외를 던져야할 때 throw 대신 Mono.error API를 사용한다
 - **Security**.   
-WebFlux용 시큐리티 어노테이션이 따로 있었다...! 지금 너무 어려워서 삽질 중
+WebFlux용 시큐리티 어노테이션이 따로 있었다...! (@EnableWebFluxSecurity < 이런거)
 <br/></br>
 
 ## 주의 사항
@@ -89,6 +89,3 @@ Flux는 blockFirst(), blockFirst(Duration timeout) 및 blockLast() , blockLast(D
 우리가 흔히 사용하는 JPA는 WebFlux에서 보통 사용하지 않는다. spring MVC + JPA 처럼 WebFlux + R2DBC 요런 느낌이당! (JDBC는 블로킹이고, R2DBC가 논블로킹) JPA와 R2DBC의 성능 차이가 커서 JPA는 권장하지 않는다고 한다.<br/>
 
 Webflux R2DBC vs JPA <br/>  https://technology.amis.nl/software-development/performance-and-tuning/spring-blocking-vs-non-blocking-r2dbc-vs-jdbc-and-webflux-vs-web-mvc/
-
-
-
