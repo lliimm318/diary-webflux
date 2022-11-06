@@ -74,7 +74,7 @@ Reactor는 리액티브 스트림을 지원하는 Mono와 Flux 사용을 위해 
 - **예외 처리**           
 WebFlux에서 리턴 타입은 Mono나 Flux로 구성된다. 예외를 던져야할 때 throw 대신 Mono.error API를 사용한다
 - **Security**.   
-WebFlux용 시큐리티 어노테이션이 따로 있었다...! (@EnableWebFluxSecurity < 이런거)
+WebFlux용 시큐리티 어노테이션이 따로 있었다...! (@EnableWebFluxSecurity < 이런거) 기존 mvc와 비슷하지만 다르게 시큐리티를 사용
 <br/></br>
 
 ## 주의 사항
