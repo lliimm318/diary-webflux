@@ -39,7 +39,7 @@
 ## WebFlux란 무엇일까
 ![1_IXq96YHAUoKk-ZNLOpaRUQ](https://user-images.githubusercontent.com/66578746/199632514-ff81d134-f5e0-46d5-adc6-6be168c01b34.png)
 
-Reactive-stack의 웹 프레임워크로 클라이언트와 서버에서 리액티브 애플리케이션 개발을 위한 논블로킹 리액티브 스트림을 지원항한다              
+Reactive-stack의 웹 프레임워크로 클라이언트와 서버에서 리액티브 애플리케이션 개발을 위한 논블로킹 리액티브 스트림을 지원한다              
 
 #### 왜 web flux가 등장했을까?
  논블로킹으로 동작하는 웹 스택의 필요성 때문에 등장하게 되었다. 기존 SpringMVC의 Servlet API v3.1 부터 논블로킹 I/O를 위한 API를 제공했었다. 하지만, 이외의 동기적으로 처리하는 모듈과 블로킹 방식의 API들이 완벽한 논블로킹 환경의 개발을 할 수 없었고, 비동기 논블로킹 환경의 서버인 Netty와의 연동을 위해 Spring은 새로운 API가 필요했다. (그래서 웹 플럭스가 두두등장 해버렷다아..)    
